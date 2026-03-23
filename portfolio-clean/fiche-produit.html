@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Template Fiche Produit — Toto Reda Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --white: #ffffff; --cream: #faf9f7; --light: #f2f0ed;
+      --border: #e8e4de; --text: #1a1a1a; --muted: #7a7570;
+      --accent: #c8a96e; --accent-dark: #a8874a; --dark: #2c2825;
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'Inter', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--sans); background: var(--cream); color: var(--text); line-height: 1.6; }
+
+    /* HEADER */
+    .portfolio-header {
+      background: var(--dark); padding: 14px 40px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .ph-logo { font-family: var(--serif); font-size: 16px; color: var(--white); }
+    .ph-logo span { color: var(--accent); }
+    .ph-badge {
+      font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--accent); background: rgba(200,169,110,.1);
+      border: 1px solid rgba(200,169,110,.3); padding: 5px 14px; border-radius: 20px;
+    }
+
+    
+
+    /* MAIN */
+    .wrapper { max-width: 900px; margin: 0 auto; padding: 48px 24px 80px; }
+
+    /* META */
+    .meta-bar {
+      display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 32px; align-items: center;
+    }
+    .meta-tag {
+      font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 5px 14px; border-radius: 20px; border: 1px solid var(--border); color: var(--muted);
+    }
+    .meta-tag.highlight { background: rgba(200,169,110,.1); border-color: rgba(200,169,110,.4); color: var(--accent-dark); }
+
+    
+
+    /* PRODUCT PAGE */
+    .product-breadcrumb { font-size: 12px; color: var(--muted); margin-bottom: 24px; }
+    .product-breadcrumb span { color: var(--accent); }
+
+    .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+
+    .product-img-wrap {
+      background: var(--white); border: 1px solid var(--border); border-radius: 12px;
+      padding: 32px; display: flex; align-items: center; justify-content: center;
+      min-height: 280px; position: relative;
+    }
+    .product-img-placeholder {
+      text-align: center; color: var(--muted);
+    }
+    .product-img-placeholder .icon { font-size: 64px; margin-bottom: 12px; }
+    .product-img-placeholder p { font-size: 12px; }
+    .img-label {
+      position: absolute; top: 12px; left: 12px;
+      font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
+      background: var(--accent); color: var(--white); padding: 4px 10px; border-radius: 4px;
+    }
+
+    .product-info { }
+    .product-brand { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+
+    .product-h1 {
+      font-family: var(--serif); font-size: 28px; font-weight: 700; line-height: 1.2;
+      color: var(--dark); margin-bottom: 12px;
+    }
+    .product-rating { display: flex; align-items: center; gap: 8px; margin-bottom: 16px; }
+    .stars { color: var(--accent); font-size: 14px; }
+    .rating-count { font-size: 12px; color: var(--muted); }
+    .product-price { font-family: var(--serif); font-size: 36px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+    .product-price-note { font-size: 12px; color: var(--muted); margin-bottom: 20px; }
+
+    .product-intro {
+      font-size: 14px; line-height: 1.8; color: var(--muted); font-weight: 300;
+      margin-bottom: 24px; padding: 16px; background: var(--cream); border-radius: 8px;
+      border-left: 3px solid var(--accent);
+    }
+
+    .product-cta-zone { display: flex; flex-direction: column; gap: 10px; }
+    .btn-primary-full {
+      width: 100%; padding: 14px; border-radius: 8px; border: none; cursor: pointer;
+      font-family: var(--sans); font-size: 14px; font-weight: 600;
+      background: var(--dark); color: var(--white); transition: all .2s;
+    }
+    .btn-primary-full:hover { background: var(--accent); }
+    .btn-secondary-full {
+      width: 100%; padding: 13px; border-radius: 8px; cursor: pointer;
+      font-family: var(--sans); font-size: 14px; font-weight: 500;
+      background: transparent; border: 1.5px solid var(--border); color: var(--muted);
+    }
+    .trust-items { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 12px; }
+    .trust-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--muted); }
+    .trust-item svg { color: #22c55e; }
+
+    /* FULL WIDTH SECTION */
+    .section { margin-bottom: 48px; }
+    .sec-title { font-family: var(--serif); font-size: 22px; font-weight: 700; color: var(--dark); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+
+    /* DESCRIPTION */
+    .desc-block { font-size: 14px; line-height: 1.9; color: var(--muted); font-weight: 300; }
+    .desc-block p { margin-bottom: 14px; }
+    .desc-block p:last-child { margin-bottom: 0; }
+    .desc-block strong { color: var(--text); font-weight: 500; }
+
+    /* SPECS TABLE */
+    .specs-table { width: 100%; border-collapse: collapse; }
+    .specs-table tr { border-bottom: 1px solid var(--border); }
+    .specs-table tr:last-child { border-bottom: none; }
+    .specs-table td { padding: 11px 14px; font-size: 13px; }
+    .specs-table td:first-child { font-weight: 600; color: var(--dark); width: 40%; background: var(--cream); }
+    .specs-table td:last-child { color: var(--muted); }
+
+    /* KEY POINTS */
+    .key-points { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .kp {
+      display: flex; align-items: flex-start; gap: 12px;
+      background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 14px;
+    }
+    .kp-icon { font-size: 20px; flex-shrink: 0; }
+    .kp-title { font-size: 13px; font-weight: 600; color: var(--dark); margin-bottom: 2px; }
+    .kp-text { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+    /* FAQ */
+    .faq-item { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 10px; overflow: hidden; }
+    .faq-q { padding: 14px 18px; font-size: 14px; font-weight: 600; color: var(--dark); background: var(--white); cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+    .faq-q::after { content: '+'; font-size: 18px; color: var(--accent); }
+    .faq-a { padding: 0 18px 14px; font-size: 13px; color: var(--muted); line-height: 1.7; background: var(--cream); font-weight: 300; }
+
+    /* SEO NOTE */
+      background: rgba(59,130,246,.06); border: 1px solid rgba(59,130,246,.2);
+      border-radius: 8px; padding: 16px 20px; margin-top: 8px;
+      font-size: 12px; color: #1d4ed8; line-height: 1.6;
+    }
+
+    /* PRINT */
+    @media print { .portfolio-header,  body { background: white; } }
+  </style>
+</head>
+<body>
+
+<!-- PORTFOLIO HEADER -->
+<div class="portfolio-header">
+  <div class="ph-logo">Toto <span>Reda</span> — Portfolio</div>
+  <div class="ph-badge">Template · Fiche Produit</div>
+</div>
+
+  <div style="font-size:11px;color:var(--muted);margin-left:auto">Survolez le texte souligné pour voir les annotations</div>
+</div>
+
+<div class="wrapper">
+
+  <!-- BREADCRUMB -->
+  <div class="product-breadcrumb">
+    <span>Accueil</span> › <span>Smartphones</span> › <span>Apple</span> ›
+    <span style="color:var(--muted)">iPhone 14 128Go Minuit Reconditionné</span>
+  </div>
+
+  <!-- PRODUCT GRID -->
+  <div class="product-grid">
+
+    <!-- LEFT: Image -->
+    <div class="product-img-wrap">
+      <div class="img-label">Reconditionné</div>
+      <div class="product-img-placeholder">
+        <div class="icon">📱</div>
+        <p>Visuel produit<br><span style="font-size:10px">fourni par le service photo</span></p>
+      </div>
+    </div>
+
+    <!-- RIGHT: Info -->
+    <div class="product-info">
+      <div class="product-brand">
+        Apple
+        
+      </div>
+
+      <h1 class="product-h1">
+        iPhone 14 128Go Minuit Reconditionné
+        
+      </h1>
+
+      <div class="product-rating">
+        <span class="stars">★★★★★</span>
+        <span class="rating-count">
+          (4.8/5 · 127 avis)
+          
+        </span>
+      </div>
+
+      <div class="product-price">
+        629,99 €
+        
+      </div>
+      <div class="product-price-note">
+        Au lieu de 1 099 € neuf · Économisez 469 €
+        
+      </div>
+
+      <div class="product-intro">
+        L'<strong>iPhone 14 reconditionné</strong> vous offre toutes les performances du dernier flagship Apple, à un prix accessible. Avec son écran Super Retina XDR de 6,1 pouces, son processeur A15 Bionic et son double capteur photo 12 Mpx, il est idéal pour <strong>la photo, la vidéo et le quotidien</strong>.
+        
+      </div>
+
+      <div class="product-cta-zone">
+        <button class="btn-primary-full">
+          🛒 Ajouter au panier
+          
+        </button>
+        <button class="btn-secondary-full">
+          ❤️ Ajouter à ma liste de souhaits
+          
+        </button>
+        <div class="trust-items">
+          <div class="trust-item">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            Garantie 24 mois
+          </div>
+          <div class="trust-item">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            Livraison 24h
+          </div>
+          <div class="trust-item">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            Retour 30 jours
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DESCRIPTION LONGUE -->
+  <div class="section">
+    <h2 class="sec-title">
+      Description détaillée
+      
+    </h2>
+    <div class="desc-block">
+      <p>
+        Redécouvrez l'excellence Apple avec l'<strong>iPhone 14 reconditionné</strong>. Ce smartphone haut de gamme a été soigneusement inspecté, testé et certifié par nos techniciens agréés avant d'être remis en vente.
+        
+      </p>
+      <p>Équipé du puissant processeur <strong>A15 Bionic</strong>, l'iPhone 14 garantit des performances fluides pour toutes vos applications, même les plus gourmandes. Que vous jouiez, éditiez vos photos ou faisiez du multitâche intensif, aucun ralentissement n'est à craindre.</p>
+      <p>
+        Son double système de caméras arrière de <strong>12 Mpx</strong> avec mode Action et détection des accidents de voiture vous permet de capturer chaque instant avec une précision remarquable, même en conditions difficiles.
+        
+      </p>
+      <p>Avec <strong>128 Go de stockage</strong>, vous disposez d'un espace généreux pour vos photos, vidéos, applications et musiques. La batterie longue durée assure une autonomie toute la journée, même avec une utilisation intensive.</p>
+    </div>
+    
+  </div>
+
+  <!-- SPECS -->
+  <div class="section">
+    <h2 class="sec-title">
+      Caractéristiques techniques
+      
+    </h2>
+    <table class="specs-table">
+      <tr><td>Marque</td><td>Apple</td></tr>
+      <tr><td>Modèle</td><td>iPhone 14</td></tr>
+      <tr><td>Capacité</td><td>128 Go</td></tr>
+      <tr><td>Couleur</td><td>Minuit (Noir)</td></tr>
+      <tr><td>Écran</td><td>6,1 pouces · Super Retina XDR · OLED</td></tr>
+      <tr><td>Processeur</td><td>Apple A15 Bionic</td></tr>
+      <tr><td>Caméra principale</td><td>Double 12 Mpx + Ultra grand-angle</td></tr>
+      <tr><td>Caméra frontale</td><td>12 Mpx · TrueDepth</td></tr>
+      <tr><td>Système</td><td>iOS 17</td></tr>
+      <tr><td>Connectivité</td><td>5G · Wi-Fi 6 · Bluetooth 5.3</td></tr>
+      <tr><td>Grade reconditionné</td><td>A (Excellent état)</td></tr>
+      <tr><td>Garantie</td><td>24 mois Hubside.Store</td></tr>
+    </table>
+    
+  </div>
+
+  <!-- KEY POINTS -->
+  <div class="section">
+    <h2 class="sec-title">
+      Pourquoi choisir cet iPhone reconditionné ?
+      
+    </h2>
+    <div class="key-points">
+      <div class="kp">
+        <div class="kp-icon">✅</div>
+        <div>
+          <div class="kp-title">Certifié et testé</div>
+          <div class="kp-text">70 points de contrôle qualité avant remise en vente. Batterie minimum 80% de capacité.</div>
+        </div>
+      </div>
+      <div class="kp">
+        <div class="kp-icon">💰</div>
+        <div>
+          <div class="kp-title">Économies garanties</div>
+          <div class="kp-text">Jusqu'à -50% par rapport au prix neuf, sans compromis sur les performances.</div>
+        </div>
+      </div>
+      <div class="kp">
+        <div class="kp-icon">🌱</div>
+        <div>
+          <div class="kp-title">Éco-responsable</div>
+          <div class="kp-text">Choisir le reconditionné c'est éviter jusqu'à 80 kg de CO₂ vs un achat neuf.</div>
+        </div>
+      </div>
+      <div class="kp">
+        <div class="kp-icon">🔧</div>
+        <div>
+          <div class="kp-title">Service après-vente</div>
+          <div class="kp-text">Réparation en boutique sous 1h pour les pannes les plus fréquentes.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- CROSS-SELL -->
+<div class="section">
+  <h2 class="sec-title">Complétez votre iPhone 14</h2>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
+
+    <div style="background:var(--white);border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:box-shadow .2s" onmouseenter="this.style.boxShadow='0 8px 32px rgba(0,0,0,.1)'" onmouseleave="this.style.boxShadow='none'">
+      <div style="height:110px;background:var(--cream);display:flex;align-items:center;justify-content:center;font-size:40px">🔌</div>
+      <div style="padding:14px">
+        <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-bottom:4px">Apple</div>
+        <div style="font-size:13px;font-weight:600;color:var(--dark);margin-bottom:8px;line-height:1.3">Câble USB-C vers Lightning 1m</div>
+        <div style="font-size:15px;font-weight:700;font-family:var(--serif);color:var(--dark);margin-bottom:10px">19,99 €</div>
+        <button style="width:100%;padding:9px;border:none;border-radius:6px;background:var(--dark);color:var(--white);font-size:12px;font-weight:600;cursor:pointer;font-family:var(--sans)">Ajouter</button>
+      </div>
+    </div>
+
+    <div style="background:var(--white);border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:box-shadow .2s" onmouseenter="this.style.boxShadow='0 8px 32px rgba(0,0,0,.1)'" onmouseleave="this.style.boxShadow='none'">
+      <div style="height:110px;background:var(--cream);display:flex;align-items:center;justify-content:center;font-size:40px">🎧</div>
+      <div style="padding:14px">
+        <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-bottom:4px">Apple</div>
+        <div style="font-size:13px;font-weight:600;color:var(--dark);margin-bottom:8px;line-height:1.3">AirPods 3ème génération</div>
+        <div style="font-size:15px;font-weight:700;font-family:var(--serif);color:var(--dark);margin-bottom:10px">169,99 €</div>
+        <button style="width:100%;padding:9px;border:none;border-radius:6px;background:var(--dark);color:var(--white);font-size:12px;font-weight:600;cursor:pointer;font-family:var(--sans)">Ajouter</button>
+      </div>
+    </div>
+
+    <div style="background:var(--white);border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:box-shadow .2s" onmouseenter="this.style.boxShadow='0 8px 32px rgba(0,0,0,.1)'" onmouseleave="this.style.boxShadow='none'">
+      <div style="height:110px;background:var(--cream);display:flex;align-items:center;justify-content:center;font-size:40px">📱</div>
+      <div style="padding:14px">
+        <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-bottom:4px">Rhinoshield</div>
+        <div style="font-size:13px;font-weight:600;color:var(--dark);margin-bottom:8px;line-height:1.3">Coque SolidSuit iPhone 14 Noir</div>
+        <div style="font-size:15px;font-weight:700;font-family:var(--serif);color:var(--dark);margin-bottom:10px">34,99 €</div>
+        <button style="width:100%;padding:9px;border:none;border-radius:6px;background:var(--dark);color:var(--white);font-size:12px;font-weight:600;cursor:pointer;font-family:var(--sans)">Ajouter</button>
+      </div>
+    </div>
+
+    <div style="background:var(--white);border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:box-shadow .2s" onmouseenter="this.style.boxShadow='0 8px 32px rgba(0,0,0,.1)'" onmouseleave="this.style.boxShadow='none'">
+      <div style="height:110px;background:var(--cream);display:flex;align-items:center;justify-content:center;font-size:40px">🛡️</div>
+      <div style="padding:14px">
+        <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-bottom:4px">Belkin</div>
+        <div style="font-size:13px;font-weight:600;color:var(--dark);margin-bottom:8px;line-height:1.3">Verre trempé incassable iPhone 14</div>
+        <div style="font-size:15px;font-weight:700;font-family:var(--serif);color:var(--dark);margin-bottom:10px">24,99 €</div>
+        <button style="width:100%;padding:9px;border:none;border-radius:6px;background:var(--dark);color:var(--white);font-size:12px;font-weight:600;cursor:pointer;font-family:var(--sans)">Ajouter</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+  <!-- FAQ -->
+  <div class="section">
+    <h2 class="sec-title">
+      Questions fréquentes
+      
+    </h2>
+    <div class="faq-item">
+      <div class="faq-q">
+        Quelle est la différence entre un iPhone reconditionné et un iPhone neuf ?
+        
+      </div>
+      <div class="faq-a">Un iPhone reconditionné est un appareil d'occasion remis à neuf par des techniciens certifiés. Il a été inspecté, réparé si nécessaire, et reconditionné pour fonctionner comme un neuf. La principale différence est le prix : jusqu'à 50% moins cher, pour les mêmes performances.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">L'iPhone 14 reconditionné est-il compatible avec les accessoires Apple ?</div>
+      <div class="faq-a">Oui, l'iPhone 14 reconditionné est 100% compatible avec tous les accessoires MagSafe, AirPods, Apple Watch et autres produits de l'écosystème Apple. Il utilise un connecteur Lightning standard.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Que couvre la garantie 24 mois Hubside.Store ?</div>
+      <div class="faq-a">Notre garantie couvre tous les défauts de fonctionnement de l'appareil : écran, batterie, processeur, connectivité. Elle ne couvre pas les dommages accidentels (casse, eau). La réparation est effectuée gratuitement dans l'un de nos 200 magasins.</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
