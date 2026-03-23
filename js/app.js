@@ -36,11 +36,11 @@ document.querySelectorAll('[id]').forEach(s => sectionObserver.observe(s));
 
 // ── TYPING EFFECT ──
 const titles = [
+  'Gestionnaire E-commerce & Catalogue Produits',
+  'Chargé de Marketing Digital & E-commerce',
   'Chef de projet e-commerce',
   'Webmaster E-commerce',
-  'Gestionnaire E-commerce & Catalogue Produits',
   'Spécialiste SEO',
-  'Chargé de Marketing Digital & E-commerce',
 ];
 let titleIndex = 0, charIndex = 0, isDeleting = false;
 
