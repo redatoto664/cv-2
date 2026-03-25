@@ -39,7 +39,7 @@ const titles = [
   'Chef de projet e-commerce',
   'Webmaster E-commerce',
   'Gestionnaire E-commerce & Catalogue Produits',
-  'Spécialiste SEO',
+  'Spécialiste SEO et E-merchandiser',
   'Chargé de Marketing Digital & E-commerce',
 ];
 let titleIndex = 0, charIndex = 0, isDeleting = false;
